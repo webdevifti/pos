@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard</title>
+        <title>@yield('title')</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('dashboard/css/toastr.min.css') }}">
@@ -67,7 +67,7 @@
                                     
                                 </nav>
                             </div> --}}
-                            <a class="nav-link {{ (request()->is('users') ? 'active': '') }}" href="{{ route('products.index') }}">
+                            <a class="nav-link {{ (request()->is('users') ? 'active': '') }}" href="{{ route('users.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users / Employees
                             </a>

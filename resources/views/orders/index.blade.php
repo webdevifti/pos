@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'Order Management')
+    
 @section('content')
 <main>
     <div class="container-fluid px-4">
@@ -64,8 +66,26 @@
                         Paying Information
                     </div>
                     <div class="card-body">
-                      <strong><h4 class="total_amount">Total: 0.00</h4></strong>
+                      <strong>
+                            Total Amount  
+                        <h4 class="total_amount"></h4></strong>
+                        <input type="hidden" value="" id="totalcost">
+
+                      <h5 class="text-info">Choose Payment Method</h5>
+                      <label for="cash" class="form-check-label">
+                        <input type="radio" class="form-check-input" id="cash" name="payment_method" value="cash"> Direct Cash</label><br>
+                      <label for="card" class="form-check-label">
+                        <input type="radio" class="form-check-input" id="card" name="payment_method" value="card"> Cradit Card</label><br>
+                      <label for="bank" class="form-check-label">
+                        <input type="radio" class="form-check-input" id="bank" name="payment_method" value="bank"> Direct Bank</label><br>
                     </div>
+                    <label for="">Payable Money</label>
+                    <input type="text" class="form-control payable" name="payable">
+                    <label for="">Return Money</label>
+                    <input type="text" class="form-control return"  name="return">
+                    <label for="">Due</label>
+                    <input type="text" class="form-control due"  name="due">
+                  
                 </div>   
             </div>
             <button type="submit">Done</button>
@@ -183,7 +203,7 @@
        var sub_total = (qty * price) - ((qty * price * discount) / 100);
        tr.find('.sub_total').val(sub_total);
        var de = totalAmount() - sub_total;
-       $('total_amount').html(de);
+       $('.total_amount').hmtl(de);
    });
 
    function totalAmount(){
@@ -192,7 +212,13 @@
         var amount = $(this).val() - 0;
         total += amount;
        });
-       $('.total_amount').html(total);
+        $('.total_amount').html(total);
+
+    //    if(a < b){
+    //        console.log('due');
+    //    }else if(a > b){
+    //        console.log('return');
+    //    }
    }
 
    $('.addMoreProduct').delegate('.product_id','change', function(){ 
@@ -217,5 +243,23 @@
         tr.find('.sub_total').val(sub_total);
         totalAmount();
    });
+
+   $('.payable').on('change', function(){
+     var total = 0;
+       $('.sub_total').each(function(i,e){
+        var amount = $(this).val() - 0;
+        total += amount;
+       });
+        var a = $('#totalcost').val(total);
+        var b = $('.payable').val();
+        if(parseInt(a.val()) > parseInt(b)){
+            var due = parseInt(a.val()) - parseInt(b);
+            $('.due').val(due);
+        }else if(parseInt(a.val()) < parseInt(b)){
+            var backmoney = parseInt(b) - parseInt(a.val());
+            $('.return').val(backmoney);
+        }
+   });
 </script>
+
 @endsection

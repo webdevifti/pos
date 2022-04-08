@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'User or Employee Management')
 @section('content')
 <main>
     <div class="container-fluid px-4">
