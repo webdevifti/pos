@@ -213,12 +213,6 @@
         total += amount;
        });
         $('.total_amount').html(total);
-
-    //    if(a < b){
-    //        console.log('due');
-    //    }else if(a > b){
-    //        console.log('return');
-    //    }
    }
 
    $('.addMoreProduct').delegate('.product_id','change', function(){ 
@@ -246,6 +240,8 @@
 
    $('.payable').on('change', function(){
      var total = 0;
+     $('.due').val('');
+     $('.return').val('');
        $('.sub_total').each(function(i,e){
         var amount = $(this).val() - 0;
         total += amount;
@@ -253,6 +249,7 @@
         var a = $('#totalcost').val(total);
         var b = $('.payable').val();
         if(parseInt(a.val()) > parseInt(b)){
+
             var due = parseInt(a.val()) - parseInt(b);
             $('.due').val(due);
         }else if(parseInt(a.val()) < parseInt(b)){
