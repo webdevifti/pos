@@ -34,12 +34,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['protectRoute']], function(){
     Route::resources([
         '/orders' => OrderController::class,
-       
         '/supplier' => SupplierController::class,
         '/companies' => CompanyController::class,
         '/products' => ProductController::class,
-        '/transactions' => TransactionController::class,
-       
         '/transactions' => TransactionController::class,
         '/customers' => CustomerController::class,
     ]);

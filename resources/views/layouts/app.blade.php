@@ -31,7 +31,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        @if(Auth::user()->is_admin == 1)
+                        <li><a class="dropdown-item" href="{{ route('settings.index') }}">Settings</a></li>
+                        @endif
                         <li><hr class="dropdown-divider" /></li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -73,7 +75,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users / Employees
                             </a>
-                            @else
                             @endif
                             <a class="nav-link {{ (request()->is('products') ? 'active': '') }}" href="{{ route('products.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></div>
@@ -81,14 +82,19 @@
                             </a>
                             <a class="nav-link {{ (request()->is('orders') ? 'active': '') }}" href="{{ route('orders.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                                Orders
+                                Make Orders
                             </a>
                             @if(Auth::user()->is_admin == 1)
                             <a class="nav-link {{ (request()->is('customers') ? 'active': '') }}" href="{{ route('customers.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Customer
                             </a>
-                            @else 
+                            @endif
+                            @if(Auth::user()->is_admin == 1)
+                            <a class="nav-link {{ (request()->is('settings') ? 'active': '') }}" href="{{ route('settings.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                Settings
+                            </a>
                             @endif
                         </div>
                     </div>
