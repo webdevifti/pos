@@ -10,7 +10,8 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('dashboard/css/toastr.min.css') }}">
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+       
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -79,6 +80,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                                 Orders
                             </a>
+                            <a class="nav-link {{ (request()->is('customers') ? 'active': '') }}" href="{{ route('customers.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                Customer
+                            </a>
                            
                         </div>
                     </div>
@@ -116,7 +121,8 @@
         <script src="{{ asset('dashboard/js/datatables-simple-demo.js') }}"></script>
 
         <script src="{{ asset('dashboard/js/toastr.min.js') }}"></script>
-
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         @yield('footer_script')
     </body>
 </html>

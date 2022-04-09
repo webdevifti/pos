@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
@@ -40,5 +41,6 @@ Route::group(['middleware' => ['protectRoute']], function(){
         '/transactions' => TransactionController::class,
         '/settings' => SettingController::class,
         '/transactions' => TransactionController::class,
+        '/customers' => CustomerController::class,
     ]);
 });

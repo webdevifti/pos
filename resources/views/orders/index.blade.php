@@ -33,7 +33,7 @@
                                 <tr class="product_row">
                                     <td>1</td>
                                     <td id="product_loop">
-                                        <select name="product_name[]" id="product_id" class="form-control product_id">
+                                        <select name="product_name[]" id="product_id" class="form-control product_id productSelect">
                                             <option value="">--select product--</option>
                                             @foreach ($get_active_product as $item)
                                                 <option data-price="{{ $item->price }}" value="{{ $item->id }}">{{ $item->product_name }}</option>
@@ -257,6 +257,12 @@
             $('.return').val(backmoney);
         }
    });
+</script>
+
+<script>
+    $(document).ready(function() {
+    $('.productSelect').select2();
+});
 </script>
 
 @endsection
