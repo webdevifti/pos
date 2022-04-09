@@ -68,10 +68,13 @@
                                     
                                 </nav>
                             </div> --}}
+                            @if(Auth::user()->is_admin == 1)
                             <a class="nav-link {{ (request()->is('users') ? 'active': '') }}" href="{{ route('users.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users / Employees
                             </a>
+                            @else
+                            @endif
                             <a class="nav-link {{ (request()->is('products') ? 'active': '') }}" href="{{ route('products.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></div>
                                 Products
@@ -80,11 +83,13 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                                 Orders
                             </a>
+                            @if(Auth::user()->is_admin == 1)
                             <a class="nav-link {{ (request()->is('customers') ? 'active': '') }}" href="{{ route('customers.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Customer
                             </a>
-                           
+                            @else 
+                            @endif
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

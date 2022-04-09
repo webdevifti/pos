@@ -34,13 +34,19 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['protectRoute']], function(){
     Route::resources([
         '/orders' => OrderController::class,
-        '/users' => UserController::class,
+       
         '/supplier' => SupplierController::class,
         '/companies' => CompanyController::class,
         '/products' => ProductController::class,
         '/transactions' => TransactionController::class,
-        '/settings' => SettingController::class,
+       
         '/transactions' => TransactionController::class,
         '/customers' => CustomerController::class,
     ]);
+    Route::group(['middleware' => ['authorizationRoute']], function(){
+        Route::resources([
+            '/users' => UserController::class,
+            '/settings' => SettingController::class,
+        ]);
+    });
 });

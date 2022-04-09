@@ -47,6 +47,9 @@ class Kernel extends HttpKernel
         'protectRoute' => [
             \App\Http\Middleware\AdministratorMiddleware::class,
         ],
+        'authorizationRoute' => [
+            \App\Http\Middleware\AuthorizationMiddleware::class,
+        ],
     ];
 
     /**
